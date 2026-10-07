@@ -1,0 +1,443 @@
+.sterling-gate {
+  --sg-ink: #20251d;
+  --sg-paper: #efeee5;
+  --sg-accent: #d8e577;
+  position: relative;
+  z-index: 30;
+  color: var(--sg-ink);
+}
+
+.sterling-gate .site-header-wrapper {
+  position: absolute;
+  z-index: 80;
+  inset: 0 0 auto;
+  width: 100%;
+  padding: 25px 0;
+  color: #f3f1e9;
+}
+
+.sterling-gate .container.is--full {
+  width: min(calc(100% - 48px), 1440px);
+  margin-inline: auto;
+}
+
+.sterling-gate .nav-row,
+.sterling-gate .nav-row__right,
+.sterling-gate .nav-logo-row {
+  display: flex;
+  align-items: center;
+}
+
+.sterling-gate .nav-row {
+  justify-content: space-between;
+  min-height: 40px;
+}
+
+.sterling-gate .nav-logo-row {
+  gap: 11px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sterling-gate .nav-logo-mark {
+  display: flex;
+  align-items: end;
+  gap: 3px;
+  width: 31px;
+  height: 31px;
+  padding: 7px 6px;
+  border: 1px solid rgb(255 255 255 / 52%);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.sterling-gate .nav-logo-mark i {
+  display: block;
+  width: 3px;
+  height: 9px;
+  border-radius: 4px;
+  background: currentColor;
+}
+
+.sterling-gate .nav-logo-mark i:nth-child(2) {
+  height: 14px;
+}
+
+.sterling-gate .nav-logo-mark i:nth-child(3) {
+  height: 11px;
+}
+
+.sterling-gate .nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  letter-spacing: 0.11em;
+}
+
+.sterling-gate .nav-wordmark strong {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.sterling-gate .nav-wordmark small {
+  color: rgb(243 241 233 / 62%);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.sterling-gate .nav-row__right {
+  gap: clamp(14px, 2.4vw, 34px);
+}
+
+.sterling-gate .nav-toggle-label,
+.sterling-gate .nav-close-btn {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.sterling-gate .nav-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 0;
+  background: transparent;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.sterling-gate .toggle-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sg-accent);
+  box-shadow: 0 0 13px rgb(216 229 119 / 80%);
+}
+
+.sterling-gate .nav-close-btn {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 0;
+  background: transparent;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.sterling-gate .nav-close-btn:focus-visible,
+.sterling-gate .nav-toggle-label:focus-visible,
+.sterling-gate .nav-logo-row:focus-visible {
+  outline: 1px solid var(--sg-accent);
+  outline-offset: 5px;
+}
+
+.sterling-gate .menu-button-text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 1.1em;
+  overflow: hidden;
+}
+
+.sterling-gate .menu-button-text p {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.sterling-gate .icon-wrap {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 50%;
+}
+
+.sterling-gate .menu-button-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+.sterling-gate .fullscreen-menu-container {
+  position: relative;
+  z-index: 100;
+}
+
+.sterling-gate .nav-overlay-wrapper {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.sterling-gate .nav-overlay-wrapper[data-nav="open"] {
+  display: block;
+}
+
+.sterling-gate .overlay {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgb(13 16 13 / 72%);
+  opacity: 0;
+  visibility: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.sterling-gate .menu-content {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  color: var(--sg-ink);
+  background: var(--sg-paper);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.sterling-gate .menu-bg {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sterling-gate .backdrop-layer {
+  position: absolute;
+  inset: 0;
+  transform: translateX(101%);
+}
+
+.sterling-gate .backdrop-layer.first {
+  background: #d6e375;
+}
+
+.sterling-gate .backdrop-layer.second {
+  background: #d9a28a;
+}
+
+.sterling-gate .backdrop-layer:not(.first):not(.second) {
+  background: #eeede4;
+}
+
+.sterling-gate .ambient-background-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.sterling-gate .bg-shape {
+  position: absolute;
+  top: 15%;
+  right: -10%;
+  width: min(62vw, 820px);
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+}
+
+.sterling-gate .bg-shape-2 {
+  top: 26%;
+  right: -6%;
+  width: min(70vw, 940px);
+}
+
+.sterling-gate .bg-shape-3 {
+  top: 4%;
+  right: 8%;
+  width: min(53vw, 700px);
+}
+
+.sterling-gate .bg-shape-4 {
+  top: 12%;
+  right: -1%;
+  width: min(61vw, 820px);
+}
+
+.sterling-gate .bg-shape-5 {
+  top: 10%;
+  right: 0;
+  width: min(59vw, 790px);
+}
+
+.sterling-gate .shape-element {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.sterling-gate .menu-content-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  pointer-events: none;
+  width: min(calc(100% - 48px), 1440px);
+  height: 100%;
+  min-height: 560px;
+  margin-inline: auto;
+  padding: clamp(112px, 16vh, 160px) 0 clamp(30px, 5vh, 58px);
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sterling-gate .menu-kicker,
+.sterling-gate .menu-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: rgb(32 37 29 / 64%);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.sterling-gate .menu-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border: 0;
+  color: var(--sg-ink);
+  background: transparent;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.sterling-gate .menu-close span {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 0.6;
+}
+
+.sterling-gate .menu-close:focus-visible {
+  outline: 1px solid var(--sg-ink);
+  outline-offset: 5px;
+}
+
+.sterling-gate .menu-list {
+  width: min(76%, 870px);
+  margin: auto 0;
+  padding: 16px 0;
+  list-style: none;
+}
+
+.sterling-gate .menu-list-item {
+  overflow: hidden;
+  border-bottom: 1px solid rgb(32 37 29 / 16%);
+}
+
+.sterling-gate .menu-list-item:first-child {
+  border-top: 1px solid rgb(32 37 29 / 16%);
+}
+
+.sterling-gate .nav-link {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 7px 10px 7px 0;
+  color: var(--sg-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 8.3vw, 116px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  text-decoration: none;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.sterling-gate .nav-link-text {
+  position: relative;
+  z-index: 1;
+}
+
+.sterling-gate .nav-link-hover-bg {
+  position: absolute;
+  z-index: 0;
+  right: -2%;
+  bottom: 12%;
+  left: -3%;
+  height: 64%;
+  background: var(--sg-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 380ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.sterling-gate .nav-link:hover .nav-link-hover-bg,
+.sterling-gate .nav-link:focus-visible .nav-link-hover-bg {
+  transform: scaleX(1);
+}
+
+.sterling-gate .nav-link:focus-visible {
+  outline: 0;
+}
+
+.sterling-gate .menu-meta {
+  padding-top: 20px;
+  border-top: 1px solid rgb(32 37 29 / 18%);
+}
+
+@media (max-width: 680px) {
+  .sterling-gate .site-header-wrapper {
+    padding-top: 19px;
+  }
+
+  .sterling-gate .container.is--full,
+  .sterling-gate .menu-content-wrapper {
+    width: calc(100% - 36px);
+  }
+
+  .sterling-gate .nav-toggle-label {
+    display: none;
+  }
+
+  .sterling-gate .nav-wordmark small {
+    font-size: 7px;
+  }
+
+  .sterling-gate .menu-content-wrapper {
+    min-height: 520px;
+    padding-top: 115px;
+    padding-bottom: 25px;
+  }
+
+  .sterling-gate .menu-list {
+    width: 100%;
+  }
+
+  .sterling-gate .nav-link {
+    font-size: clamp(43px, 12vw, 72px);
+  }
+
+  .sterling-gate .menu-kicker,
+  .sterling-gate .menu-meta {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .sterling-gate .bg-shape {
+    top: 26%;
+    right: -38%;
+    width: 110vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sterling-gate .nav-link-hover-bg {
+    transition-duration: 0.01ms;
+  }
+}
