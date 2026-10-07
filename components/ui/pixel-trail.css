@@ -19,5 +19,4 @@
   display: block;
   opacity: 0;
   pointer-events: none;
-  will-change: opacity;
 }
