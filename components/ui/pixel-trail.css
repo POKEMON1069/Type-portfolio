@@ -1,0 +1,22 @@
+.pixel-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.pixel-trail__grid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-content: start;
+  justify-content: start;
+}
+
+.pixel-trail__pixel {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+}
